@@ -5,7 +5,6 @@ import com.example.restaurant.dto.response.PlatoDTOResponse;
 import com.example.restaurant.entity.Plato;
 import com.example.restaurant.repository.PlatoRepository;
 import com.example.restaurant.utils.PlatoMapper;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class PlatoService {
         repository.deleteById(id);
     }
 
-    public List<Plato> findAllPokemon(){
+    public List<Plato> findAllPlato(){
         return repository.findAll();
     }
 
