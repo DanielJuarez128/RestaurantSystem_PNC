@@ -32,8 +32,8 @@ public class PlatoService {
         return repository.findAll();
     }
 
-    public void updatePokemon(int id, PlatoDTORequest pokemon){
-        Plato platoToUpdate = PlatoMapper.toEntity(pokemon);
+    public void updatePlato(int id, PlatoDTORequest plato){
+        Plato platoToUpdate = PlatoMapper.toEntity(plato);
         if (repository.existsById(id)){
             platoToUpdate.setId(id);
         }
