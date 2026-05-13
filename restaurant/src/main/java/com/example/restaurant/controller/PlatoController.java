@@ -2,6 +2,7 @@ package com.example.restaurant.controller;
 
 import com.example.restaurant.dto.GeneralResponse;
 import com.example.restaurant.dto.request.PlatoDTORequest;
+import com.example.restaurant.dto.response.PlatoDTOResponse;
 import com.example.restaurant.service.PlatoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,7 @@ public class PlatoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GeneralResponse> updatePlato(int id,@RequestBody PlatoDTORequest plato) {
+    public ResponseEntity<GeneralResponse> updatePlato(@PathVariable int id,@RequestBody PlatoDTORequest plato) {
         platoService.updatePlato(id, plato);
         return ResponseEntity.ok(GeneralResponse.builder()
                 .data(plato)
@@ -50,10 +51,11 @@ public class PlatoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<GeneralResponse> deletePlato(@PathVariable int id) {
+        PlatoDTOResponse platoToDeleted = platoService.findPlatoById(id);
         platoService.deletePlatoById(id);
         return ResponseEntity.ok(GeneralResponse.builder()
-                .data(platoService.findPlatoById(id))
-                .message("Pokemon has been deleted")
+                .data(platoToDeleted)
+                .message("Plato has been deleted")
                 .build());
     }
 
